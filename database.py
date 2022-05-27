@@ -1,69 +1,74 @@
+from datetime import date
 from sqlalchemy import *
-from sqlalchemy.ext.declarative import  declarative_base
+#from sqlalchemy.ext.declarative import  declarative_base
 from sqlalchemy.orm import *
 
 #łączę z bazą danych
 engine = create_engine('sqlite:///bazafirmy.sqlite', echo=True)
+Session = sessionmaker(engine)
 #zarzadzamie tabelami
 base = declarative_base()
 
 
-class Pracownicy(base):
+
+class Pracownik(base):
 
     __tablename__ = 'Pracownicy'
 
-    IDpracownika = Column(Integer, primary_key=True)
-    Imie = Column(String(30))
-    Nazwisko = Column(String(30))
-    DataUrodzenia = Column(Date)
+    id_pracownika = Column(Integer, primary_key=True, name="IDpracownika")
+    imie = Column(String(30), name="Imie")
+    nazwisko = Column(String(30), name="Nazwisko")
+    data_urodzenia = Column(Date, name="DataUrodzenia")
     su = Column(Boolean)
+    dokumenty = relationship("Dokumenty", back_populates="pracownik")
+    dane_logowania = relationship("DaneLogowania", back_populates="pracownik")
 
-
-    def __init__(self, IDpracownika, Imie, Nazwisko, DataUrodzenia, su):
-        self.IDpracownika = IDpracownika
-        self.Imie = Imie
-        self.Nazwisko = Nazwisko
-        self.DataUrodzenia = DataUrodzenia
-        self.su = su
 
 class DaneLogowania(base):
 
     __tablename__ = 'DaneLogowania'
 
-    IDpracownika = Column(Integer, primary_key=True)
-    login = Column(String(255))
-    haslo = Column(String(255))
+    id_danych_logowania = Column(Integer, primary_key=True,
+                               name="IDDanychLogowania")
+    id_pracownika = Column(Integer, ForeignKey("Pracownicy.IDpracownika"),
+                          name="IDPracownika")
+    pracownik = relationship("Pracownik", back_populates="dane_logowania")
+    login = Column(String(255), name="Login")
+    haslo = Column(String(255), name="Haslo")
 
-    def __init__(self, IDpracownika, login, haslo):
-        self.IDpracownika = IDpracownika
-        self.login = login
-        self.haslo = haslo
 
 class Dokumenty(base):
 
     __tablename__ = 'Dokumenty'
 
-    IDdokumentu = Column(Integer, primary_key=True)
-    IDpracownika = Column(Integer)
-    TypDokumentu = Column(String(3))
-
-    def __init__(self, IDdokumentu, IDpracownika, TypDokumentu):
-        self.IDdokumentu = IDdokumentu
-        self.IDpracownika = IDpracownika
-        self.TypDokumentu = TypDokumentu
+    id_dokumentu = Column(Integer, primary_key=True, name="IDdokumentu")
+    id_pracownika = Column(Integer, ForeignKey('Pracownicy.IDpracownika'),
+                          name="IDpracownika")
+    typ_dokumentu = Column(String(3), name="TypDokumentu")
+    pracownik = relationship("Pracownik", back_populates="dokumenty")
 
 base.metadata.create_all(engine)
 
-Pracownicy.insert().values([
-    {"IDpracownika": "0"},
-    {"Imie": "Adam"},
-    {"Nazwisko": "Celej"},
-    {"DataUrodzenia": "20010510"},
-    {"su": "True"}
-])
+pracownicy_do_dodania = [
+    Pracownik(imie="Adam", nazwisko="Celej",
+               data_urodzenia=date(2001, 5, 10), su=True),
+    Pracownik(imie="Marek", nazwisko="Kowalski",
+               data_urodzenia=date(1986, 12, 10), su=False)
+]
 
-DaneLogowania.insert().values([
-    {"IDpracownika": "0"},
-    {"login": "adamcelej"},
-    {"haslo": "brakmuzgu"}
-])
+dane_logowania_do_dodania = [
+    DaneLogowania(pracownik=pracownicy_do_dodania[0], login="adamcelej",
+                  haslo="brakmuzgu"),
+    DaneLogowania(pracownik=pracownicy_do_dodania[1], login="marekkowalski",
+                  haslo="wiemwszystko")
+]
+
+with Session() as session:
+    session.add_all(pracownicy_do_dodania)
+    session.add_all(dane_logowania_do_dodania)
+    session.commit()
+
+"""def weryfikacja_logowania(login, haslo):
+    #pobieram login i haslo z labelki
+    login = login
+    haslo = haslo"""
