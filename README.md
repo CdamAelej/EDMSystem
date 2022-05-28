@@ -3,7 +3,7 @@ electronic documents management system
 
 Feautures:
 1. Database
-2. Login window and system (working on login verification)
+2. Login window with login verification through database
 
 ToDo:
 1. Document creating (generating or handwriting)
