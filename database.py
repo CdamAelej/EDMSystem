@@ -1,5 +1,6 @@
 from datetime import date
 from sqlalchemy import *
+#from sqlalchemy.sql import select
 #from sqlalchemy.ext.declarative import  declarative_base
 from sqlalchemy.orm import *
 
@@ -68,7 +69,23 @@ with Session() as session:
     session.add_all(dane_logowania_do_dodania)
     session.commit()
 
-"""def weryfikacja_logowania(login, haslo):
+
+
+def weryfikacja_logowania(login, haslo):
     #pobieram login i haslo z labelki
-    login = login
-    haslo = haslo"""
+    loginWeryfikacja = login
+    hasloWeryfikacja = haslo
+    selekcja = select(DaneLogowania)
+    wyniki = engine.connect().execute(selekcja, [(loginWeryfikacja), (hasloWeryfikacja)])
+    #wyniki2 = wyniki.fetchall()
+    if wyniki:
+        return True
+    else:
+        return False
+
+
+"""for wiersz in wyniki:
+        if login == login and haslo == haslo:
+            return True
+        else:
+            return False"""

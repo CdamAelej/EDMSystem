@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ECDS_form</class>
+ <widget class="QMainWindow" name="ECDS_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1727</width>
+    <height>821</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Electronic Documents Management System</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="1">
+     <widget class="QMdiArea" name="mdiArea">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="subwindow">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="windowTitle">
+        <string>Podokno</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1727</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDokumenty">
+    <property name="title">
+     <string>Dokumenty</string>
+    </property>
+    <widget class="QMenu" name="stworz_menu">
+     <property name="title">
+      <string>Stworz</string>
+     </property>
+     <addaction name="automatycznie_action"/>
+     <addaction name="recznie_action"/>
+     <addaction name="odrecznie_action"/>
+    </widget>
+    <addaction name="stworz_menu"/>
+    <addaction name="otworz_action"/>
+    <addaction name="wyslij_action"/>
+   </widget>
+   <widget class="QMenu" name="menuStatystyka">
+    <property name="title">
+     <string>Statystyka</string>
+    </property>
+    <addaction name="otworzOkno_action"/>
+   </widget>
+   <widget class="QMenu" name="menuBaza_danych">
+    <property name="title">
+     <string>Baza danych</string>
+    </property>
+    <addaction name="pokazPracownikow_action"/>
+    <addaction name="pokazDokumenty_action"/>
+    <addaction name="separator"/>
+    <addaction name="dodajPracownika_action"/>
+    <addaction name="pokazDaneLogowania_action"/>
+    <addaction name="pokazTabele_action"/>
+    <addaction name="usunPracownika_action"/>
+   </widget>
+   <addaction name="menuDokumenty"/>
+   <addaction name="menuStatystyka"/>
+   <addaction name="menuBaza_danych"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="otworz_action">
+   <property name="text">
+    <string>Otworz</string>
+   </property>
+  </action>
+  <action name="otworzOkno_action">
+   <property name="text">
+    <string>Otworz okno</string>
+   </property>
+  </action>
+  <action name="pokazPracownikow_action">
+   <property name="text">
+    <string>Pokaz pracownikow</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="wyslij_action">
+   <property name="text">
+    <string>Wyslij</string>
+   </property>
+  </action>
+  <action name="pokazDokumenty_action">
+   <property name="text">
+    <string>Pokaż dokumenty</string>
+   </property>
+  </action>
+  <action name="dodajPracownika_action">
+   <property name="text">
+    <string>Dodaj pracownika</string>
+   </property>
+  </action>
+  <action name="pokazDaneLogowania_action">
+   <property name="text">
+    <string>Pokaz dane logowania</string>
+   </property>
+  </action>
+  <action name="pokazTabele_action">
+   <property name="text">
+    <string>Pokaz tabele</string>
+   </property>
+  </action>
+  <action name="usunPracownika_action">
+   <property name="text">
+    <string>Usun pracownika</string>
+   </property>
+  </action>
+  <action name="automatycznie_action">
+   <property name="text">
+    <string>Automatycznie</string>
+   </property>
+  </action>
+  <action name="recznie_action">
+   <property name="text">
+    <string>Recznie</string>
+   </property>
+  </action>
+  <action name="odrecznie_action">
+   <property name="text">
+    <string>Odrecznie</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
