@@ -83,6 +83,11 @@ def weryfikacja_logowania(login, haslo):
     else:
         return False
 
+def wyswietlPracownikow():
+    selekcja = select(Pracownik)
+    wyniki = engine.connect().execute(selekcja)
+    for wiersz in wyniki:
+        print(wiersz)
 
 """for wiersz in wyniki:
         if login == login and haslo == haslo:
