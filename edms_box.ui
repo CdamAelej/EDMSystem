@@ -34,6 +34,9 @@
         <string>Podokno</string>
        </property>
        <widget class="QTableWidget" name="tableWidget">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>-4</x>
@@ -81,6 +84,184 @@
         <column/>
         <column/>
        </widget>
+      </widget>
+      <widget class="QWidget" name="pokazDokumenty_subwindow">
+       <property name="windowTitle">
+        <string>Podokno</string>
+       </property>
+       <widget class="QTableWidget" name="pokazDokumenty_tablewidget">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>5</x>
+          <y>1</y>
+          <width>551</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <property name="rowCount">
+         <number>2</number>
+        </property>
+        <row/>
+        <row/>
+        <column>
+         <property name="text">
+          <string>IDdokumentu</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>IDpracownika</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>TypDokumentu</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pokazDaneLogowania_subwindow">
+       <property name="windowTitle">
+        <string>Podokno</string>
+       </property>
+       <widget class="QTableWidget" name="pokazDaneLogowania_tableWidget">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>321</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="rowCount">
+         <number>2</number>
+        </property>
+        <property name="columnCount">
+         <number>3</number>
+        </property>
+        <row/>
+        <row/>
+        <column>
+         <property name="text">
+          <string>IDpracownika</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Haslo</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="dodajPracownika_subwindow">
+       <property name="windowTitle">
+        <string>Podokno</string>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0" colspan="2">
+         <widget class="QLabel" name="dodajPracownika_label">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>18</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Dodaj pracownika</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="imiePracownika_label">
+          <property name="text">
+           <string>Podaj imie pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="imiePracownika_lineEdit"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="nazwiskoPracownika_label">
+          <property name="text">
+           <string>Podaj nazwisko pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="nazwiskoPracownika_lineEdit"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="dataUrodzenia_label">
+          <property name="text">
+           <string>Podaj date urodzenia pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="loginPracownika_label">
+          <property name="text">
+           <string>Podaj nowy login dla pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="loginPracownika_lineEdit"/>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="hasloPracownik_label">
+          <property name="text">
+           <string>Podaj nowe haslo dla pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="hasloPracownika_lineEdit"/>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="uprawnieniaSU_label">
+          <property name="text">
+           <string>Czy pracownik ma uprawnienia su?</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QCheckBox" name="uprawnieniaSU_checkBox">
+          <property name="text">
+           <string>CheckBox</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDateEdit" name="dataUrodzenia_dateEdit"/>
+        </item>
+        <item row="7" column="1">
+         <widget class="QDialogButtonBox" name="buttonBox">
+          <property name="standardButtons">
+           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

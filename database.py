@@ -67,18 +67,24 @@ dane_logowania_do_dodania = [
                   haslo="wiemwszystko")
 ]
 
+dokumenty_do_dodania = [
+    Dokumenty(pracownik=pracownicy_do_dodania[0], typ_dokumentu="pdf"),
+    Dokumenty(pracownik=pracownicy_do_dodania[1], typ_dokumentu="pdf")
+]
+
 # Tworze sesje oraz wstawiam powyzsze rekordy do bazy
 with Session() as session:
     if session is null:
         session.add_all(pracownicy_do_dodania)
         session.add_all(dane_logowania_do_dodania)
+        session.add_all(dokumenty_do_dodania)
         session.commit()
 
 
 def wyswietlPracownikow():
-    selekcja = select(Pracownik)
+    selekcja = select(Dokumenty)
     wyniki = engine.connect().execute(selekcja)
     for wiersz in wyniki:
         print(wiersz)
 
-# wyswietlPracownikow()
+#wyswietlPracownikow()
