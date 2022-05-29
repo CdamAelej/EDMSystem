@@ -1,19 +1,22 @@
 from datetime import date
 from sqlalchemy import *
-#from sqlalchemy.sql import select
-#from sqlalchemy.ext.declarative import  declarative_base
 from sqlalchemy.orm import *
 
-#łączę z bazą danych
+# lacze z baza danych
 engine = create_engine('sqlite:///bazafirmy.sqlite', echo=True)
 Session = sessionmaker(engine)
-#zarzadzamie tabelami
+# zarzadzamie tabelami
 base = declarative_base()
 
+"""
+Tworze klase Pracownik ktora odpowiada za stworzenie tabeli Pracownicy
+Dzieki jej konstruktorowi moge tworzyc nowe rekordy do tabel. Tak samo
+dzialaja klasy DaneLogowania oraz Dokumenty. Klasy (tabele) DaneLogowania oraz
+Dokumenty sa w relacji z Pracownikami
+"""
 
 
 class Pracownik(base):
-
     __tablename__ = 'Pracownicy'
 
     id_pracownika = Column(Integer, primary_key=True, name="IDpracownika")
@@ -26,35 +29,35 @@ class Pracownik(base):
 
 
 class DaneLogowania(base):
-
     __tablename__ = 'DaneLogowania'
 
     id_danych_logowania = Column(Integer, primary_key=True,
-                               name="IDDanychLogowania")
+                                 name="IDDanychLogowania")
     id_pracownika = Column(Integer, ForeignKey("Pracownicy.IDpracownika"),
-                          name="IDPracownika")
+                           name="IDPracownika")
     pracownik = relationship("Pracownik", back_populates="dane_logowania")
     login = Column(String(255), name="Login")
     haslo = Column(String(255), name="Haslo")
 
 
 class Dokumenty(base):
-
     __tablename__ = 'Dokumenty'
 
     id_dokumentu = Column(Integer, primary_key=True, name="IDdokumentu")
     id_pracownika = Column(Integer, ForeignKey('Pracownicy.IDpracownika'),
-                          name="IDpracownika")
+                           name="IDpracownika")
     typ_dokumentu = Column(String(3), name="TypDokumentu")
     pracownik = relationship("Pracownik", back_populates="dokumenty")
 
+
 base.metadata.create_all(engine)
 
+# Tworze listy w ktorych tworze nowe rekordy do tabel Pracownicy oraz DaneLogowania
 pracownicy_do_dodania = [
     Pracownik(imie="Adam", nazwisko="Celej",
-               data_urodzenia=date(2001, 5, 10), su=True),
+              data_urodzenia=date(2001, 5, 10), su=True),
     Pracownik(imie="Marek", nazwisko="Kowalski",
-               data_urodzenia=date(1986, 12, 10), su=False)
+              data_urodzenia=date(1986, 12, 10), su=False)
 ]
 
 dane_logowania_do_dodania = [
@@ -64,24 +67,13 @@ dane_logowania_do_dodania = [
                   haslo="wiemwszystko")
 ]
 
+# Tworze sesje oraz wstawiam powyzsze rekordy do bazy
 with Session() as session:
-    session.add_all(pracownicy_do_dodania)
-    session.add_all(dane_logowania_do_dodania)
-    session.commit()
+    if session is null:
+        session.add_all(pracownicy_do_dodania)
+        session.add_all(dane_logowania_do_dodania)
+        session.commit()
 
-
-
-def weryfikacja_logowania(login, haslo):
-    #pobieram login i haslo z labelki
-    loginWeryfikacja = login
-    hasloWeryfikacja = haslo
-    selekcja = select(DaneLogowania)
-    wyniki = engine.connect().execute(selekcja, [(loginWeryfikacja), (hasloWeryfikacja)])
-    #wyniki2 = wyniki.fetchall()
-    if wyniki:
-        return True
-    else:
-        return False
 
 def wyswietlPracownikow():
     selekcja = select(Pracownik)
@@ -89,8 +81,4 @@ def wyswietlPracownikow():
     for wiersz in wyniki:
         print(wiersz)
 
-"""for wiersz in wyniki:
-        if login == login and haslo == haslo:
-            return True
-        else:
-            return False"""
+# wyswietlPracownikow()
