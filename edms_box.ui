@@ -33,15 +33,53 @@
        <property name="windowTitle">
         <string>Podokno</string>
        </property>
-       <widget class="QTableView" name="tableView">
+       <widget class="QTableWidget" name="tableWidget">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>20</y>
-          <width>256</width>
-          <height>192</height>
+          <x>-4</x>
+          <y>0</y>
+          <width>551</width>
+          <height>111</height>
          </rect>
         </property>
+        <property name="rowCount">
+         <number>2</number>
+        </property>
+        <property name="columnCount">
+         <number>10</number>
+        </property>
+        <row/>
+        <row/>
+        <column>
+         <property name="text">
+          <string>IDpracownika</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Imie</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nazwisko</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>DataUrodzenia</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>su</string>
+         </property>
+        </column>
+        <column/>
+        <column/>
+        <column/>
+        <column/>
+        <column/>
        </widget>
       </widget>
      </widget>
