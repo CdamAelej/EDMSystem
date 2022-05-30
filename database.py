@@ -74,7 +74,7 @@ dokumenty_do_dodania = [
 
 # Tworze sesje oraz wstawiam powyzsze rekordy do bazy
 with Session() as session:
-    if session is null:
+    #if session is null:
         session.add_all(pracownicy_do_dodania)
         session.add_all(dane_logowania_do_dodania)
         session.add_all(dokumenty_do_dodania)
@@ -88,3 +88,4 @@ def wyswietlPracownikow():
         print(wiersz)
 
 #wyswietlPracownikow()
+xyz = 3

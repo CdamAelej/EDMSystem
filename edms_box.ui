@@ -42,15 +42,23 @@
           <x>-4</x>
           <y>0</y>
           <width>551</width>
-          <height>111</height>
+          <height>331</height>
          </rect>
         </property>
         <property name="rowCount">
-         <number>2</number>
-        </property>
-        <property name="columnCount">
          <number>10</number>
         </property>
+        <property name="columnCount">
+         <number>5</number>
+        </property>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
         <row/>
         <row/>
         <column>
@@ -78,11 +86,6 @@
           <string>su</string>
          </property>
         </column>
-        <column/>
-        <column/>
-        <column/>
-        <column/>
-        <column/>
        </widget>
       </widget>
       <widget class="QWidget" name="pokazDokumenty_subwindow">
