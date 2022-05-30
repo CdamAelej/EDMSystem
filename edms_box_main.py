@@ -88,26 +88,29 @@ class GlowneOkno(QtWidgets.QMainWindow, Ui_ECDS_form):
             self.pokazDaneLogowania_tableWidget.setItem(tabelawiersze, 2, QtWidgets.QTableWidgetItem(str(wiersz[2])))
             tabelawiersze += 1
 
+    def wstawPracownika(self, ):
+        imiePracownika = self.imiePracownika_lineEdit.text()
+        nazwiskoPracownika = self.nazwiskoPracownika_lineEdit.text()
+        dataUrodzenia = self.dataUrodzenia_dateEdit.date()
+        login = self.loginPracownika_lineEdit.text()
+        haslo = self.hasloPracownika_lineEdit.text()
+        x = self.uprawnieniaSU_checkBox.isChecked()
+        if x == True:
+            uprawnienia = True
+        else:
+            uprawnienia = False
+        nowyPracownik = database.Pracownik(imie=imiePracownika, nazwisko=nazwiskoPracownika,
+                                           dataUrodzenia=dataUrodzenia, su=uprawnienia)
+        noweDaneLogowania = database.DaneLogowania(pracownik=nowyPracownik, login=login, haslo=haslo)
+        with database.Session() as session:
+            session.add(nowyPracownik)
+            session.add(noweDaneLogowania)
+            session.commit()
+
     def dodajPracownika(self, ):
-        sw = self.mdiArea.addSubWindow(self.dodajPracownika_subwindow)
+        self.mdiArea.addSubWindow(self.dodajPracownika_subwindow)
         self.dodajPracownika_subwindow.show()
-        if self.buttonBox.clicked(QtWidgets.QDialogButtonBox.Ok):
-            imiePracownika = self.imiePracownika_lineEdit.text()
-            nazwiskoPracownika = self.nazwiskoPracownika_lineEdit.text()
-            dataUrodzenia = self.dataUrodzenia_dateEdit.date()
-            login = self.loginPracownika_lineEdit
-            haslo = self.hasloPracownika_lineEdit
-            if self.uprawnieniaSU_checkBox.clicked():
-                uprawnienia = True
-            else:
-                uprawnienia = False
-            nowyPracownik = database.Pracownik(imie=imiePracownika, nazwisko=nazwiskoPracownika,
-                                               dataUrodzenia=dataUrodzenia, su=uprawnienia)
-            noweDaneLogowania = database.DaneLogowania(pracownik=nowyPracownik, login=login, haslo=haslo)
-            with database.Session() as session:
-                session.add(nowyPracownik)
-                session.add(noweDaneLogowania)
-                session.commit()
+        self.buttonBox.clicked.connect(lambda: self.wstawPracownika())
 
 
 if __name__ == '__main__':
