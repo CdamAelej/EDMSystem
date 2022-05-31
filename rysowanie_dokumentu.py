@@ -2,26 +2,28 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 import sys
+import datetime
 
 
 class RysujDokument(QWidget):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
-
+        """
+        WA_StaticContents - Wskazuje, że zawartość widżetu jest wyrównana w kierunku północno-zachodnim i statyczna.
+        Przy zmianie rozmiaru taki widżet otrzyma zdarzenia malowania tylko dla jego części, które są nowo widoczne.
+        Ta flaga jest ustawiana lub usuwana przez autora widżetu.
+        """
         self.setAttribute(Qt.WA_StaticContents)
         w = 400
         h = 400
         self.szerokoscPisaka = 5
         self.kolorPisaka = Qt.black
+        # Ustawiam obszar rysowania
         self.dokument = QImage(w, h, QImage.Format_RGB32)
+        # Ustawiam sciezke rysowania (szlaczek)
         self.sciezka = QPainterPath()
         self.wyczyscDokument()
 
-    def ustawKolorPisaka(self, nowyKolor):
-        self.kolorPisaka = nowyKolor
-
-    def ustawSzerokoscPisaka(self, nowaSzerokosc):
-        self.szerokoscPisaka = nowaSzerokosc
 
     def wyczyscDokument(self):
         self.sciezka = QPainterPath()
@@ -29,13 +31,16 @@ class RysujDokument(QWidget):
         self.update()
 
     def zapiszDokument(self, nazwaPliku, formatPliku):
+        # dzisiaj = datetime.datetime.now()
+        # data_czas = dzisiaj.strftime('%m/%d/%Y/%H:%M:%S')
         self.dokument.save(nazwaPliku, formatPliku)
+        # print(str(data_czas))
 
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.drawImage(event.rect(), self.dokument, self.rect())
 
-    def mousePressEventeEvent(self, event):
+    def mousePressEvent(self, event):
         self.sciezka.moveTo(event.pos())
 
     def mouseMoveEvent(self, event):
@@ -63,7 +68,7 @@ if __name__ == '__main__':
     widget.layout().addWidget(wyczysc_button)
     widget.layout().addWidget(tworz_dokument)
 
-    zapisz_button.clicked.connect(lambda: tworz_dokument.zapiszObraz("dokument.png", "PNG"))
+    zapisz_button.clicked.connect(lambda: tworz_dokument.zapiszDokument("dokument.png", "PNG"))
     wyczysc_button.clicked.connect(lambda: tworz_dokument.wyczyscDokument())
 
     widget.show()

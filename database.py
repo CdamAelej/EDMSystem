@@ -3,7 +3,7 @@ from sqlalchemy import *
 from sqlalchemy.orm import *
 
 # lacze z baza danych
-engine = create_engine('sqlite:///bazafirmy.sqlite', echo=True)
+engine = create_engine('sqlite:///databases/bazafirmy.sqlite', echo=True)
 Session = sessionmaker(engine)
 # zarzadzamie tabelami
 base = declarative_base()
@@ -79,13 +79,3 @@ with Session() as session:
         session.add_all(dane_logowania_do_dodania)
         session.add_all(dokumenty_do_dodania)
         session.commit()
-
-
-def wyswietlPracownikow():
-    selekcja = select(Dokumenty)
-    wyniki = engine.connect().execute(selekcja)
-    for wiersz in wyniki:
-        print(wiersz)
-
-#wyswietlPracownikow()
-xyz = 3

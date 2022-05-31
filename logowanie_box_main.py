@@ -15,21 +15,24 @@ class OknoLogowania(QtWidgets.QWidget, Ui_Logowanie):
         self.setWindowTitle("Logowanie")
         self.zatwierdz_button.clicked.connect(self.autoryzacja)
 
+
+    """
+    Funkcja odpowiadajaca za autoryzacje logowania
+    Pobieram login i haslo z labelek, w tabeli DaneLogowania sprawdzam czy istnieje takie konto
+    Jesli istnieje to tworze zalogowanego uzytkownika do statystyk , pokazuje okno z informacja
+    O pomyslnym zalogowaniu, zamykam okno logowania i otwieram glowne okno aplikacji
+    Jesli logowanie jest niepoprawne wyswietlam o tym informacje i pozwalam uzytkownikowi na nastepna
+    Probe zalogowania
+    """
     def autoryzacja(self):
         Login = self.login_edit.text()
         haslo = self.haslo_edit.text()
         wiersz = db.session.query(db.DaneLogowania).filter(db.DaneLogowania.login == Login, db.DaneLogowania.haslo == haslo).first()
         if wiersz:
-            silnik = db.create_engine('sqlite:///bazafirmy.sqlite')
-            polaczenie = silnik.connect()
-            metadane = db.MetaData()
-            #pracownicy = db.Table('Pracownicy', metadane, autoload=True, autoload_with=silnik)
             kolejka = db.session.query(db.Pracownik).filter(db.Pracownik.id_pracownika == wiersz.id_pracownika).first()
             zalogowanyUzytkownik_pomocnik = Zalogowany(kolejka.id_pracownika, kolejka.imie, kolejka.nazwisko, kolejka.data_urodzenia, kolejka.su)
             zalogowanyUzytkownik = zalogowanyUzytkownik_pomocnik
             print(zalogowanyUzytkownik.IDpracownika, zalogowanyUzytkownik.Imie, zalogowanyUzytkownik.Nazwisko, zalogowanyUzytkownik.DataUrodzenia, zalogowanyUzytkownik.su)
-            #wynikiPomocnik = polaczenie.execute(kolejka)
-            #wynikiZestaw = kolejka.fetchall()
             self.close()
             QtWidgets.QMessageBox.information(self, 'Zalogowano', 'Pomyślnie zalogowano')
             widget = GlowneOkno()
