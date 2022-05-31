@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ECDS_form</class>
+ <widget class="QMainWindow" name="ECDS_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1727</width>
+    <height>821</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Electronic Documents Management System</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="1">
+     <widget class="QMdiArea" name="mdiArea">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="subwindow">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="windowTitle">
+        <string>Podokno</string>
+       </property>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>-4</x>
+          <y>0</y>
+          <width>551</width>
+          <height>331</height>
+         </rect>
+        </property>
+        <property name="rowCount">
+         <number>10</number>
+        </property>
+        <property name="columnCount">
+         <number>5</number>
+        </property>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <row/>
+        <column>
+         <property name="text">
+          <string>IDpracownika</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Imie</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nazwisko</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>DataUrodzenia</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>su</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pokazDokumenty_subwindow">
+       <property name="windowTitle">
+        <string>Podokno</string>
+       </property>
+       <widget class="QTableWidget" name="pokazDokumenty_tablewidget">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>5</x>
+          <y>1</y>
+          <width>551</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <property name="rowCount">
+         <number>2</number>
+        </property>
+        <row/>
+        <row/>
+        <column>
+         <property name="text">
+          <string>IDdokumentu</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>IDpracownika</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>TypDokumentu</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pokazDaneLogowania_subwindow">
+       <property name="windowTitle">
+        <string>Podokno</string>
+       </property>
+       <widget class="QTableWidget" name="pokazDaneLogowania_tableWidget">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>421</width>
+          <height>261</height>
+         </rect>
+        </property>
+        <property name="rowCount">
+         <number>2</number>
+        </property>
+        <property name="columnCount">
+         <number>4</number>
+        </property>
+        <row/>
+        <row/>
+        <column>
+         <property name="text">
+          <string>ID</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>IDpracownika</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Login</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Haslo</string>
+         </property>
+        </column>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="dodajPracownika_subwindow">
+       <property name="windowTitle">
+        <string>Podokno</string>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0" colspan="2">
+         <widget class="QLabel" name="dodajPracownika_label">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>18</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text">
+           <string>Dodaj pracownika</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="imiePracownika_label">
+          <property name="text">
+           <string>Podaj imie pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="imiePracownika_lineEdit"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="nazwiskoPracownika_label">
+          <property name="text">
+           <string>Podaj nazwisko pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="nazwiskoPracownika_lineEdit"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="dataUrodzenia_label">
+          <property name="text">
+           <string>Podaj date urodzenia pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="loginPracownika_label">
+          <property name="text">
+           <string>Podaj nowy login dla pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="loginPracownika_lineEdit"/>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="hasloPracownik_label">
+          <property name="text">
+           <string>Podaj nowe haslo dla pracownika</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="hasloPracownika_lineEdit"/>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="uprawnieniaSU_label">
+          <property name="text">
+           <string>Czy pracownik ma uprawnienia su?</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QCheckBox" name="uprawnieniaSU_checkBox">
+          <property name="text">
+           <string>CheckBox</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDateEdit" name="dataUrodzenia_dateEdit"/>
+        </item>
+        <item row="7" column="1">
+         <widget class="QDialogButtonBox" name="buttonBox">
+          <property name="standardButtons">
+           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1727</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDokumenty">
+    <property name="title">
+     <string>Dokumenty</string>
+    </property>
+    <widget class="QMenu" name="stworz_menu">
+     <property name="title">
+      <string>Stworz</string>
+     </property>
+     <addaction name="automatycznie_action"/>
+     <addaction name="recznie_action"/>
+     <addaction name="odrecznie_action"/>
+    </widget>
+    <addaction name="stworz_menu"/>
+    <addaction name="otworz_action"/>
+    <addaction name="wyslij_action"/>
+   </widget>
+   <widget class="QMenu" name="menuStatystyka">
+    <property name="title">
+     <string>Statystyka</string>
+    </property>
+    <addaction name="otworzOkno_action"/>
+   </widget>
+   <widget class="QMenu" name="menuBaza_danych">
+    <property name="title">
+     <string>Baza danych</string>
+    </property>
+    <addaction name="pokazPracownikow_action"/>
+    <addaction name="pokazDokumenty_action"/>
+    <addaction name="separator"/>
+    <addaction name="dodajPracownika_action"/>
+    <addaction name="pokazDaneLogowania_action"/>
+    <addaction name="pokazTabele_action"/>
+    <addaction name="usunPracownika_action"/>
+   </widget>
+   <addaction name="menuDokumenty"/>
+   <addaction name="menuStatystyka"/>
+   <addaction name="menuBaza_danych"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="otworz_action">
+   <property name="text">
+    <string>Otworz</string>
+   </property>
+  </action>
+  <action name="otworzOkno_action">
+   <property name="text">
+    <string>Otworz okno</string>
+   </property>
+  </action>
+  <action name="pokazPracownikow_action">
+   <property name="text">
+    <string>Pokaz pracownikow</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="wyslij_action">
+   <property name="text">
+    <string>Wyslij</string>
+   </property>
+  </action>
+  <action name="pokazDokumenty_action">
+   <property name="text">
+    <string>Pokaż dokumenty</string>
+   </property>
+  </action>
+  <action name="dodajPracownika_action">
+   <property name="text">
+    <string>Dodaj pracownika</string>
+   </property>
+  </action>
+  <action name="pokazDaneLogowania_action">
+   <property name="text">
+    <string>Pokaz dane logowania</string>
+   </property>
+  </action>
+  <action name="pokazTabele_action">
+   <property name="text">
+    <string>Pokaz tabele</string>
+   </property>
+  </action>
+  <action name="usunPracownika_action">
+   <property name="text">
+    <string>Usun pracownika</string>
+   </property>
+  </action>
+  <action name="automatycznie_action">
+   <property name="text">
+    <string>Automatycznie</string>
+   </property>
+  </action>
+  <action name="recznie_action">
+   <property name="text">
+    <string>Recznie</string>
+   </property>
+  </action>
+  <action name="odrecznie_action">
+   <property name="text">
+    <string>Odrecznie</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
